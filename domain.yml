@@ -1,0 +1,163 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- affirm
+- restaurant_search
+- ask_email
+- thank
+- greet
+- deny
+- out_of_scope
+- stop
+- bye
+entities:
+- budget
+- cuisine
+- email
+- location
+- location_valid
+slots:
+  cuisine:
+    type: text
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
+  budget:
+    type: text
+    influence_conversation: true
+  email:
+    type: text
+    influence_conversation: true
+  email_message:
+    type: text
+    influence_conversation: true
+  location_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+    - valid
+    - invalid
+  search_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+    - valid
+    - invalid
+  cuisine_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+    - valid
+    - invalid
+responses:
+  utter_ask_cuisine:
+  - text: What kind of cuisine would you like to have?
+    buttons:
+    - title: Chinese
+      payload: Chinese
+    - title: Mexican
+      payload: Mexican
+    - title: Italian
+      payload: Italian
+    - title: American
+      payload: American
+    - title: South Indian
+      payload: South Indian
+    - title: North Indian
+      payload: North Indian
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: In what location?
+  - text: Can you tell me the location you are looking for?
+  utter_ask_location_retry:
+  - text: Will you like to search for some other location?
+  - text: Can you please specify some other location?
+  utter_default:
+  - text: i cannot understand
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_bye:
+  - text: goodbye, hope i was of help today
+  - text: Bye-bye
+  - text: Bye!
+  - text: See you again!
+  - text: goodbye :(
+  - text: Bye-bye
+  utter_ask_budget:
+  - text: What's the average budget for two people?
+    buttons:
+    - title: Lesser than Rs. 300
+      payload: '299'
+    - title: Rs. 300 to 700
+      payload: '700'
+    - title: More than Rs. 700
+      payload: '701'
+  utter_ask_details:
+  - text: Would you like me to send an email with details of restaurants?
+  - text: Should I send you details of all the restaurants on email?
+  utter_ask_email:
+  - text: Please provide your email id.
+  - text: To what email id should I send it to?
+  utter_confirm_email:
+  - text: Sent.
+  - text: Sent. Bon Appetit!
+  - text: An email has been sent to you.
+  utter_happy:
+  - text: Great carry on!
+  utter_location_invalid:
+  - text: Sorry, we do not operate in this city.
+  utter_out_of_scope:
+  - text: Sorry, I do not understand this. Please be specific.
+  utter_search_invalid:
+  - text: Sorry, we do not have any restaurants which match your requirements. Hope to serve you better next time!
+  utter_thanks_response:
+  - text: You are welcome!
+  - text: You are most welcome! Is there anything else that i can help you with?
+  utter_deny:
+  - text: Sorry, hope to serve you better next time.
+  utter_goodbye:
+  - text: goodbye
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_ask_cuisine_retry:
+  - text: Will you like to search for some other cuisine?
+  - text: Can I help you look for some other cuisine today?
+  utter_cuisine_invalid:
+  - text: Sorry. We do not serve the requested cuisine.
+  utter_deny_email:
+  - text: Okay. Bon Appetit!
+actions:
+- action_cuisine_valid
+- action_location_valid
+- action_restart
+- action_search_restaurants
+- action_send_email
+- action_slot_reset
+- utter_ask_budget
+- utter_ask_cuisine
+- utter_ask_cuisine_retry
+- utter_ask_details
+- utter_ask_email
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_location_retry
+- utter_bye
+- utter_confirm_email
+- utter_cuisine_invalid
+- utter_default
+- utter_deny
+- utter_deny_email
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_location_invalid
+- utter_out_of_scope
+- utter_search_invalid
+- utter_thanks_response
